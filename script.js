@@ -1,31 +1,37 @@
-const video = document.getElementById('myVideo');
-const overlayEnd = document.getElementById('endBlurOverlay');
-const countdownText = document.getElementById('countdownText');
-const countdownEl = document.getElementById('countdown');
-const finalBtn = document.getElementById('finalUnlockBtn');
+// script.js
 
-const randomLinks = [
-  'https://grnjnn.faiirylove.net/?utm_source=da57dc555e50572d&ban=fb&j1=1&j2=1&s1=234613&s2=2123201',
-  'https://www.profitableratecpm.com/ri2aefi1p8?key=a10b110330839bbfbb7fec351a7ec05d',
-  'https://www.profitableratecpm.com/bawdk8ijc?key=79fad2e099b836ddb8ffd995baa06ef7'
-];
+function closeAd() {
+  const redirectUrl = "https://bugscrawled.com/ii8jptvfm?key=ab223ae93a27889dd2cc4b50a1715f3d";
+  document.getElementById("topAd").style.display = "none";
+  if (Math.random() < 0.4) {
+    window.location.href = redirectUrl;
+  }
+}
 
-video.addEventListener('ended', () => {
-  const finalLink = randomLinks[Math.floor(Math.random() * randomLinks.length)];
+// Iklan bawah (320x50)
+window.addEventListener("DOMContentLoaded", () => {
+  const adScript = document.createElement("script");
+  adScript.type = "text/javascript";
+  adScript.innerHTML = `
+    atOptions = {
+      'key': '38805ce397204cc2a1daefdc61110bc6',
+      'format': 'iframe',
+      'height': 50,
+      'width': 320,
+      'params': {}
+    };
+  `;
+  const invokeScript = document.createElement("script");
+  invokeScript.src = "//bugscrawled.com/38805ce397204cc2a1daefdc61110bc6/invoke.js";
 
-  overlayEnd.style.display = 'flex';
+  const bottomAd = document.getElementById("bottomAd");
+  if (bottomAd) {
+    bottomAd.appendChild(adScript);
+    bottomAd.appendChild(invokeScript);
+  }
 
-  let counter = 5;
-  countdownEl.textContent = counter;
-
-  const countdownInterval = setInterval(() => {
-    counter--;
-    countdownEl.textContent = counter;
-    if (counter === 0) {
-      clearInterval(countdownInterval);
-      countdownText.style.display = 'none';
-      finalBtn.href = finalLink;
-      finalBtn.style.display = 'inline-block';
-    }
-  }, 1000);
+  // PopUnder script
+  const popScript = document.createElement("script");
+  popScript.src = "//pl26423726.profitableratecpm.com/d4/74/54/d47454e44c5578a494516619dccd52bb.js";
+  document.body.appendChild(popScript);
 });
